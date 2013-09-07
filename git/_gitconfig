@@ -13,5 +13,5 @@
 [push]
 	default = current
 [core]
-	excludesfile = /home/g/.gitignore
+	excludesfile = /home/gavri/.gitignore
 	editor = emacs -nw
