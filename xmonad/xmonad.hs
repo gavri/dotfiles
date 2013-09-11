@@ -233,7 +233,7 @@ myLayout = showWName' (defaultSWNConfig {swn_fade = 0.1, swn_font = "xft: Ubuntu
 myManageHook = composeAll .concat $ [[namedScratchpadManageHook scratchpads, manageDocks], [className =? "Do" --> doIgnore ]]
 main = xmonad $ ewmh defaultConfig {
         focusFollowsMouse  = True,
-        terminal  = "urxvtc",
+        terminal  = "urxvtc -ls",
         modMask            = mod4Mask,
         workspaces         = workspaceNames,
         keys               = myKeys,
