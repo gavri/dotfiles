@@ -1,0 +1,5 @@
+!/bin/bash
+case $1 in
+  hibernate | suspend | suspend-hybrid)
+    xscreensaver-command -lock
+esac
