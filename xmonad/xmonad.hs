@@ -73,7 +73,7 @@ scratchpads = [
 myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     [ ((modMask .|. shiftMask, xK_Return), spawn $ XMonad.terminal conf)
     , ((modMask .|. controlMask, xK_l     ), spawn "xtrlock")
-    -- , ((modMask .|. controlMask, xK_s     ), spawn "pm-suspend")
+    , ((modMask .|. controlMask, xK_s     ), spawn "gksudo pm-suspend-hybrid")
     , ((modMask .|. shiftMask, xK_c     ), kill1)
     , ((modMask,               xK_space ), sendMessage NextLayout)
     , ((modMask .|. shiftMask, xK_space ), setLayout $ XMonad.layoutHook conf)
@@ -254,7 +254,9 @@ main = xmonad $ ewmh defaultConfig {
                   spawn "synclient TapButton2=3"
                   spawn "synclient TapButton3=2"
                   spawn "pidgin"
+                  spawn "xfce4-power-manager"
                   spawn "killall parcellite; parcellite"
+                  spawn "xscreensaver -no-splash"
                   spawn "xsetroot -solid darkred"
                   spawn "xmodmap ~/.xmodmaprc"
                   spawn "urxvtd"
