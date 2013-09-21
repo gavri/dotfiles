@@ -72,7 +72,7 @@ scratchpads = [
 
 myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     [ ((modMask .|. shiftMask, xK_Return), spawn $ XMonad.terminal conf)
-    , ((modMask .|. controlMask, xK_l     ), spawn "xtrlock")
+    , ((modMask .|. controlMask, xK_l     ), spawn "xscreensaver-command -lock")
     , ((modMask .|. controlMask, xK_s     ), spawn "gksudo pm-suspend-hybrid")
     , ((modMask .|. shiftMask, xK_c     ), kill1)
     , ((modMask,               xK_space ), sendMessage NextLayout)
