@@ -9,6 +9,7 @@ import XMonad.Actions.PhysicalScreens
 import XMonad.Actions.UpdatePointer
 import XMonad.Actions.CopyWindow
 import XMonad.Actions.GridSelect
+import XMonad.Actions.Volume
 import XMonad.Hooks.UrgencyHook
 import XMonad.Hooks.EwmhDesktops
 import XMonad.Layout.WindowArranger
@@ -119,8 +120,18 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
             ((modMask, xK_i), namedScratchpadAction scratchpads "information"),
             ((modMask, xK_p), namedScratchpadAction scratchpads "htop"),
             ((modMask, xK_m), namedScratchpadAction scratchpads "music"),
-            ((modMask, xK_s), namedScratchpadAction scratchpads "social"),
-            ((modMask, xK_v), namedScratchpadAction scratchpads "volume")])
+            ((modMask, xK_s), namedScratchpadAction scratchpads "social")])
+    , ((modMask, xK_v), SM.submap . M.fromList $
+            [((modMask, xK_m), spawn "amixer -D pulse set Master toggle"),
+            ((modMask, xK_i), namedScratchpadAction scratchpads "volume"),
+            ((modMask, xK_comma), lowerVolume 4 >> return ()),
+            ((modMask, xK_period), raiseVolume 4 >> return ()),
+            ((modMask, xK_f), setVolume 100),
+            ((modMask, xK_h), modifyVolume (/ 2) >> return ()),
+            ((modMask, xK_d), modifyVolume (* 2) >> return ()),
+            ((modMask, xK_period), raiseVolume 4 >> return ())
+            ] ++
+            zip (zip (repeat modMask) [xK_1..xK_9]) (zipWith ($) (repeat setVolume) [10, 20..90]))
     , ((modMask, xK_m), SM.submap . M.fromList $
             [ ((modMask, xK_p), spawn "mpc toggle")
             , ((modMask, xK_comma), spawn "mpc prev")
