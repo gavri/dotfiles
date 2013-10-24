@@ -260,6 +260,7 @@ main = xmonad $ ewmh defaultConfig {
                   setWMName "LG3D"
                   startupHook defaultConfig
                   spawn "killall xflux; ~/xflux  -l 12.9833 -g 77.5833"
+                  spawn "syndaemon -i 1 -t"
                   spawn "synclient PalmDetect=1"
                   spawn "synclient TapButton1=1"
                   spawn "synclient TapButton2=3"
