@@ -132,6 +132,11 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
             ((modMask, xK_period), raiseVolume 4 >> return ())
             ] ++
             zip (zip (repeat modMask) [xK_1..xK_9]) (zipWith ($) (repeat setVolume) [10, 20..90]))
+    , ((modMask, xK_8), SM.submap . M.fromList $
+            [((modMask, xK_f), spawn "xbacklight -set 100"),
+            ((modMask, xK_comma), spawn ("xbacklight -dec " ++ show 10)),
+            ((modMask, xK_period), spawn ("xbacklight -inc " ++ show 10))
+            ])
     , ((modMask, xK_m), SM.submap . M.fromList $
             [ ((modMask, xK_p), spawn "mpc toggle")
             , ((modMask, xK_comma), spawn "mpc prev")
