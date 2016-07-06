@@ -20,7 +20,7 @@ URxvt*scrollBar: false
 URxvt*scrollBar_right: true
 URxvt*scrollstyle: rxvt
 URxvt.perl-lib: /home/g/urxvt-perls
-URxvt.perl-ext-common: url-select,keyboard-select,clipboard
+URxvt.perl-ext-common: url-select,keyboard-select,clipboard,selection-to-clipboard
 URxvt.keysym.M-Escape: perl:keyboard-select:activate
 URxvt.keysym.M-u: perl:url-select:select_next
 URxvt.keysym.C-S-C: perl:clipboard:copy

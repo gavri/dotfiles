@@ -32,7 +32,7 @@ import XMonad.Prompt.AppendFile
 import XMonad.Util.NamedScratchpad
 import qualified XMonad.Actions.Submap as SM
 import XMonad.Hooks.DynamicLog
-import XMonad.Prompt.KillProcesses
+-- import XMonad.Prompt.KillProcesses
 
 
 workspaceNames = map return ['a'..'z']
@@ -95,7 +95,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , ((modMask              , xK_BackSpace), focusUrgent)
     , ((modMask .|. controlMask, xK_y), defaultCommands >>= runCommand)
     , ((modMask, xK_x), runOrRaisePrompt bigXPConfig)
-    , ((modMask, xK_x), killProcesses bigXPConfig)
+    -- , ((modMask, xK_x), killProcesses bigXPConfig)
     , ((modMask,                 xK_Right), sendMessage $ Go R)
     , ((modMask,                 xK_Left), sendMessage $ Go L)
     , ((modMask,                 xK_Up), sendMessage $ Go U)
@@ -144,7 +144,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
             , ((modMask, xK_period), spawn "mpc next")
             ])
     , ((modMask, xK_o), SM.submap . M.fromList $
-            [((modMask, xK_e), spawn "emacs")
+            [((modMask, xK_e), spawn "urxvt -e nvim")
             , ((modMask, xK_v), spawn "vlc")
             , ((modMask, xK_t), spawn $ XMonad.terminal conf)
             , ((modMask, xK_o), spawn "synapse")
@@ -244,6 +244,7 @@ defaultLayout = layoutHintsToCenter (tiled)
 
 myLayout = showWName' (defaultSWNConfig {swn_fade = 0.1, swn_font = "xft: Ubuntu-30", swn_color = "#a8f7a3", swn_bgcolor = "#3f3c6d"}) $ toggleLayouts Full $ workspaceDir "" $ windowNavigation $ avoidStruts
         $ onWorkspace "i" (withIM (1%7) (Role "buddy_list") defaultLayout)
+        $ onWorkspace "f" ((workspaceDir "/home/g/fms") defaultLayout)
         $ defaultLayout
 
 myManageHook = composeAll .concat $ [[namedScratchpadManageHook scratchpads, manageDocks], [className =? "Do" --> doIgnore ]]
@@ -258,9 +259,6 @@ main = xmonad $ ewmh defaultConfig {
         normalBorderColor = "#000000"
         , borderWidth        = 3
         , manageHook         = manageHook defaultConfig <+> myManageHook
-        , logHook            = do
-                       dynamicLog
-                       updatePointer (Relative 0.5 0.5)
         , startupHook        = do
                   setWMName "LG3D"
                   startupHook defaultConfig
@@ -270,7 +268,7 @@ main = xmonad $ ewmh defaultConfig {
                   spawn "synclient TapButton1=1"
                   spawn "synclient TapButton2=3"
                   spawn "synclient TapButton3=2"
-                  spawn "pidgin"
+                  spawn "slack"
                   spawn "xfce4-power-manager"
                   spawn "killall parcellite; parcellite"
                   spawn "xscreensaver -no-splash"

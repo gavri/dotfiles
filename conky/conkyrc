@@ -34,7 +34,6 @@ ${color yellow}$hr
 ${alignc} ${time %H:%M}
 ${alignc}${Time %a %b %d %Y}
 ${color yellow}$hr
-${color yellow}Battery:${color pink} ${battery_short BAT1} ${battery_bar BAT1}
 ${color yellow}$hr
 ${color yellow}RAM Usage:$color $mem/$memmax - $memperc% ${membar 4}
 ${color yellow}Swap Usage:$color $swap/$swapmax - $swapperc% ${swapbar 4}
