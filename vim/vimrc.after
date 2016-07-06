@@ -1,0 +1,6 @@
+nnoremap <leader>ff :CtrlP<CR>
+nnoremap <leader>fb :CtrlPBuffer<CR>
+nnoremap <leader>fx :CtrlPMixed<CR>
+set guioptions -=m
+set guioptions -=T
+
