@@ -144,7 +144,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
             , ((modMask, xK_period), spawn "mpc next")
             ])
     , ((modMask, xK_o), SM.submap . M.fromList $
-            [((modMask, xK_e), spawn "urxvt -e nvim")
+            [((modMask, xK_e), spawn "gvim")
             , ((modMask, xK_v), spawn "vlc")
             , ((modMask, xK_t), spawn $ XMonad.terminal conf)
             , ((modMask, xK_o), spawn "synapse")

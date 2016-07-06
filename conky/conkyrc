@@ -34,12 +34,5 @@ ${color yellow}$hr
 ${alignc} ${time %H:%M}
 ${alignc}${Time %a %b %d %Y}
 ${color yellow}$hr
+${execi 60 acpi -b}
 ${color yellow}$hr
-${color yellow}RAM Usage:$color $mem/$memmax - $memperc% ${membar 4}
-${color yellow}Swap Usage:$color $swap/$swapmax - $swapperc% ${swapbar 4}
-${color yellow}CPU Usage:$color $cpu% ${cpubar 4}
-$hr
-${color yellow}Networking:
-Eth : Up:$color ${upspeed eth0} ${color yellow} - Down:$color ${downspeed eth0}
-Wifi: Up:$color ${upspeed wlan0} ${color yellow} - Down:$color ${downspeed wlan0}
-$hr
