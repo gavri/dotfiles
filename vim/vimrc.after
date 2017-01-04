@@ -3,4 +3,5 @@ nnoremap <leader>fb :CtrlPBuffer<CR>
 nnoremap <leader>fx :CtrlPMixed<CR>
 set guioptions -=m
 set guioptions -=T
+autocmd VimResized * wincmd =
 
