@@ -14,4 +14,4 @@
 	default = current
 [core]
 	excludesfile = /home/gavri/.gitignore
-	editor = emacs -nw
+	editor = vim
