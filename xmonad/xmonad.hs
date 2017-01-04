@@ -57,17 +57,17 @@ smallXPConfig = bigXPConfig
   }
 
 scratchpads = [
-     NS "htop" "urxvtc -e htop" (title =? "htop")
+     NS "htop" "gnome-terminal -e htop" (title =? "htop")
          (customFloating $ W.RationalRect (1/6) (1/6) (2/3) (2/3)),
      NS "social" "gwibber" (className =? "gwibber")
          (customFloating $ W.RationalRect (1/6) (1/6) (2/3) (2/3)),
-     NS "music" "urxvtc -title music -e ncmpc" (title =? "music")
+     NS "music" "gnome-terminal -title music -e ncmpc" (title =? "music")
          (customFloating $ W.RationalRect (1/6) (1/6) (2/3) (2/3)),
      NS "notes" "gvim --role notes -c 'set autoread' -c'set wrap' -c 'au FocusLost * :wa' -c 'colorscheme slate' -c 'Note'" (role =? "notes")
          (customFloating $ W.RationalRect (1/6) (1/6) (2/3) (2/3)),
      NS "information" "conky" (className =? "Conky")
          (customFloating $ W.RationalRect (1/6) (1/6) (2/3) (2/3)),
-     NS "volume" "urxvtc -e alsamixer" (title =? "alsamixer")
+     NS "volume" "gnome-terminal -e alsamixer" (title =? "alsamixer")
          (customFloating $ W.RationalRect (1/6) (1/6) (2/3) (2/3))
  ] where role = stringProperty "WM_WINDOW_ROLE"
 
@@ -144,11 +144,11 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
             , ((modMask, xK_period), spawn "mpc next")
             ])
     , ((modMask, xK_o), SM.submap . M.fromList $
-            [((modMask, xK_e), spawn "gvim")
+            [((modMask, xK_e), spawn "gnome-terminal -e vim")
             , ((modMask, xK_v), spawn "vlc")
             , ((modMask, xK_t), spawn $ XMonad.terminal conf)
             , ((modMask, xK_o), spawn "synapse")
-            , ((modMask, xK_f), spawn "urxvtc -e ranger")
+            , ((modMask, xK_f), spawn "gnome-terminal -e ranger")
             ])
     , ((modMask, xK_b), SM.submap . M.fromList $
             [ ((modMask, xK_f), spawn "google-chrome --new-window facebook.com")
@@ -250,7 +250,7 @@ myLayout = showWName' (defaultSWNConfig {swn_fade = 0.1, swn_font = "xft: Ubuntu
 myManageHook = composeAll .concat $ [[namedScratchpadManageHook scratchpads, manageDocks], [className =? "Do" --> doIgnore ]]
 main = xmonad $ ewmh defaultConfig {
         focusFollowsMouse  = True,
-        terminal  = "urxvtc -ls",
+        terminal  = "gnome-terminal",
         modMask            = mod4Mask,
         workspaces         = workspaceNames,
         keys               = myKeys,
@@ -274,7 +274,6 @@ main = xmonad $ ewmh defaultConfig {
                   spawn "xscreensaver -no-splash"
                   spawn "xsetroot -solid darkred"
                   spawn "xmodmap ~/.xmodmaprc"
-                  spawn "urxvtd"
                   spawn "dropbox start"
         , layoutHook         = windowArrange $ smartBorders $ myLayout
   }
