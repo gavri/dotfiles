@@ -271,6 +271,7 @@ main = xmonad $ ewmh defaultConfig {
                   spawn "slack"
                   spawn "xfce4-power-manager"
                   spawn "killall parcellite; parcellite"
+                  spawn "killall redshift; redshift"
                   spawn "xscreensaver -no-splash"
                   spawn "xsetroot -solid darkred"
                   spawn "xmodmap ~/.xmodmaprc"
